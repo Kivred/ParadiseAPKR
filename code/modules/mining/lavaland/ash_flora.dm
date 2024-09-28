@@ -354,13 +354,16 @@
 	harvest_message_high = "You finish mining the rock."
 	delete_on_harvest = TRUE
 
-/obj/structure/flora/ash/rock/style_2
+/obj/structure/flora/ash/rock/style_2/Initialize(mapload)
+	. = ..()
 	icon_state = "basalt2"
 
-/obj/structure/flora/ash/rock/style_3
+/obj/structure/flora/ash/rock/style_3/Initialize(mapload)
+	. = ..()
 	icon_state = "basalt3"
 
-/obj/structure/flora/ash/rock/style_4
+/obj/structure/flora/ash/rock/style_4/Initialize(mapload)
+	. = ..()
 	icon_state = "basalt4"
 
 /obj/structure/flora/ash/rock/style_random/Initialize(mapload)
