@@ -482,5 +482,15 @@
 /turf/simulated/floor/plating/ice/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
 	return
 
+/turf/simulated/floor/plating/ice/airless
+	temperature = TCMB
+	oxygen = 0
+	nitrogen = 0
+
 /turf/simulated/floor/plating/ice/smooth
 	icon_state = "smooth"
+
+/turf/simulated/floor/plating/ice/airless/smooth
+	temperature = TCMB
+	oxygen = 0
+	nitrogen = 0
