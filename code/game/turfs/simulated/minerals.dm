@@ -889,6 +889,7 @@
 
 /turf/simulated/mineral/snow
 	name = "snowy rock"
+	desc = "Looks cold."
 	icon = 'icons/turf/smoothrocks_snow.dmi'
 	icon_state = "smoothrocks_snow-0"
 	base_icon_state = "smoothrocks_snow"

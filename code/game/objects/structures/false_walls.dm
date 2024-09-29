@@ -520,3 +520,15 @@
 	canSmoothWith = SMOOTH_GROUP_MINERAL_WALLS
 	mineral = /obj/item/stack/ore/glass/basalt/ancient
 	walltype = /turf/simulated/mineral/ancient
+
+/obj/structure/falsewall/mineral_snow
+	name = "snowy rock"
+	desc = "Looks cold."
+	icon = 'icons/turf/smoothrocks_snow.dmi'
+	base_icon_state = "smoothrocks_snow"
+	icon_state = "rock_ancient"
+	smooth = SMOOTH_BITMASK
+	smoothing_groups = SMOOTH_GROUP_MINERAL_WALLS
+	canSmoothWith = SMOOTH_GROUP_MINERAL_WALLS
+	// mineral = /obj/item/stack/ore/glass/basalt/ancient
+	walltype = /turf/simulated/mineral/snow
