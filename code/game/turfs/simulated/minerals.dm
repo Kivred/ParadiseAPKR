@@ -886,3 +886,11 @@
 	icon = 'icons/turf/smoothrocks_volcanic.dmi'
 	base_icon_state = "smoothrocks_volcanic"
 	hardness = 3
+
+/turf/simulated/mineral/snow
+	name = "snowy rock"
+	icon = 'icons/turf/smoothrocks_snow.dmi'
+	icon_state = "smoothrocks_snow-0"
+	base_icon_state = "smoothrocks_snow"
+	baseturf = /turf/simulated/floor/plating/asteroid/snow/airless
+	turf_type = /turf/simulated/floor/plating/asteroid/snow/airless
