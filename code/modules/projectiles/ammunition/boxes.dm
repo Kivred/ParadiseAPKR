@@ -191,6 +191,10 @@
 	ammo_type = /obj/item/ammo_casing/a556
 	max_ammo = 60
 
+/obj/item/ammo_box/a556/tsf
+	icon_state = "ammobox_556x45_TSF"
+	ammo_type = /obj/item/ammo_casing/a556/tsf
+
 /obj/item/ammo_box/ak814
 	name = "AK ammo box (5.45x39mm)"
 	icon_state = "ammobox_AK"

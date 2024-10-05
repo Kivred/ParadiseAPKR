@@ -501,3 +501,17 @@
 	mag_type = /obj/item/ammo_box/magazine/m52mag
 	can_suppress = 0
 
+//TAPS-26
+
+/obj/item/gun/projectile/automatic/taps26
+	name = "TAPS-26"
+	desc = "Assault rifle developed by ATG-tec. weapon for the TSF Marine Corps, to suppress the enemy at medium distances."
+	icon_state = "taps-26"
+	item_state = "taps-26"
+	fire_sound = 'sound/weapons/gunshots/1taps26.ogg'
+	magin_sound = 'sound/weapons/gun_interactions/taps_magin.ogg'
+	magout_sound = 'sound/weapons/gun_interactions/taps_magout.ogg'
+	mag_type = /obj/item/ammo_box/magazine/taps26
+	origin_tech = "combat=6;materials=3"
+	burst_size = 2
+	fire_delay = 1

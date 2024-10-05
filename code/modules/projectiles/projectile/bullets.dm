@@ -227,6 +227,10 @@
 /obj/item/projectile/bullet/heavybullet
 	damage = 35
 
+/obj/item/projectile/bullet/heavybullet2
+	damage = 30
+	icon_state = "bullet-4"
+
 /obj/item/projectile/bullet/stunshot	//taser slugs for shotguns, nothing special
 	name = "stunshot"
 	damage = 5

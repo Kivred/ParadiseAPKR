@@ -437,6 +437,10 @@
 	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_NORMAL
 	muzzle_flash_range = MUZZLE_FLASH_RANGE_NORMAL
 
+/obj/item/ammo_casing/a556/tsf
+	icon_state = "556x45mm"
+	projectile_type = /obj/item/projectile/bullet/heavybullet2
+
 /obj/item/ammo_casing/a545
 	desc = "A 5.45x39mm bullet casing."
 	caliber = "5.45x39mm"

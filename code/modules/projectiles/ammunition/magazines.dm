@@ -470,6 +470,16 @@
 	max_ammo = 30
 	multiple_sprites = 2
 
+/obj/item/ammo_box/magazine/taps26
+	name = "TAPS-26 magazine (5.56mm)"
+	icon_state = "taps26_mag"
+	desc = "This magazine is available for the TAPS-26 assault rifle."
+	origin_tech = "combat=3"
+	ammo_type = /obj/item/ammo_casing/a556/tsf
+	caliber = "5.56mm"
+	max_ammo = 35
+	multiple_sprites = 2
+
 /obj/item/ammo_box/magazine/ak814
 	name = "AK magazine (5.45x39mm)"
 	icon_state = "ak814"
