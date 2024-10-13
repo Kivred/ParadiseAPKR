@@ -1578,3 +1578,16 @@
 	category = CAT_ROBOT
 	always_availible = FALSE
 	time = 1 SECONDS
+
+/datum/crafting_recipe/taps26
+	name = "TAPS-26"
+	result = /obj/item/gun/projectile/automatic/taps26
+	reqs = list(
+		/obj/item/stack/sheet/plasteel = 2,
+		/obj/item/gun/projectile/shotgun/riot = 1,
+		/obj/item/weaponcrafting/gunkit/taps26 = 1
+	)
+	tools = list(TOOL_SCREWDRIVER, TOOL_CROWBAR, TOOL_WELDER)
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+	always_availible = FALSE

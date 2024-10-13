@@ -8,7 +8,7 @@
 		return
 	for(var/datum/crafting_recipe/crafting_recipe_type as anything in crafting_recipe_types)
 		user.mind.teach_crafting_recipe(crafting_recipe_type)
-		to_chat(user, "<span class='notice'>You learned how to make [initial(crafting_recipe_type.name)].</span>")
+		to_chat(user, span_notice("You learned how to make [initial(crafting_recipe_type.name)]."))
 
 /obj/item/book/granter/crafting_recipe/dusting
 	icon_state = "book1"
@@ -37,6 +37,26 @@
 	)
 
 /obj/item/book/granter/crafting_recipe/combat_baking/recoil(mob/living/user)
-	to_chat(user, "<span class='warning'>The book dissolves into burnt flour!</span>")
+	to_chat(user, span_warning("The book dissolves into burnt flour!"))
 	new /obj/effect/decal/cleanable/ash(get_turf(src))
+	qdel(src)
+
+
+///TAPS-26 crafting recipe////
+/obj/item/book/granter/crafting_recipe/taps26_manual
+	name = "TAPS-26 assembly manual"
+	desc = "Brief instructions for assembly, maintenance and operation of TAPS-26."
+	crafting_recipe_types = list(
+		/datum/crafting_recipe/taps26
+	)
+	icon_state = "taps26_manual"
+	remarks = list(
+		"\"Install the shutter as shown in pictures 1 and 2.\"",
+		"\"Insert the spring and trigger as shown in pictures 3 and 4.\"",
+		"\"Secure the structure well with a screwdriver.\""
+	)
+
+/obj/item/book/granter/crafting_recipe/taps26_manual/recoil(mob/living/user)
+	to_chat(user, span_warning("The manual\'s content was lost, leaving only paper scraps."))
+	new /obj/item/paper/crumpled(get_turf(src))
 	qdel(src)

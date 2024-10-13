@@ -133,3 +133,15 @@
 
 	return ..()
 
+// GUN PART KIT //
+
+/obj/item/weaponcrafting/gunkit
+	name = "generic gun parts kit"
+	desc = "It's an empty gun parts container! Why do you have this?"
+	icon = 'icons/obj/improvised.dmi'
+	icon_state = "gunkit"
+
+/obj/item/weaponcrafting/gunkit/taps26
+	name = "taps-26 gun parts kit"
+	desc = "A suitcase containing the necessary gun parts for assembling a TAPS-26."
+	icon_state = "solcase"
