@@ -614,3 +614,9 @@
 				do_sparks(5, 1, src)
 				electrocute_mob(user, get_area(src), src, 0.5, TRUE)
 		return TRUE
+
+/obj/structure/closet/crate/abductor
+	desc = "Abductor crate"
+	name = "abductor crate"
+	icon_state = "abductorcrate"
+	material_drop = /obj/item/stack/sheet/mineral/abductor

@@ -585,3 +585,9 @@
 		SPECIES_NEARA = 'icons/mob/clothing/species/monkey/shoes.dmi',
 		SPECIES_STOK = 'icons/mob/clothing/species/monkey/shoes.dmi'
 		)
+
+/obj/item/clothing/shoes/combat/abductor
+	name = "abductor boots"
+	desc = "A pair of boots."
+	icon_state = "abductor_boots"
+	item_state = "abductor_boots"

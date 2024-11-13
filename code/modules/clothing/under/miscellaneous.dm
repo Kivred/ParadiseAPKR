@@ -1193,3 +1193,16 @@
 		SPECIES_STOK = 'icons/mob/clothing/species/monkey/uniform.dmi'
 		)
 
+/obj/item/clothing/under/abductor
+	name = "adbductor jumpsuit"
+	desc = "Abductor jumpsuit."
+	icon_state = "abductor_jumpsuit"
+	item_state = "abductor_jumpsuit"
+	item_color = "abductor_jumpsuit"
+
+/obj/item/clothing/under/abductor/skirt
+	name = "adbductor skirt"
+	desc = "Abductor skirt."
+	icon_state = "abductor_skirt"
+	item_state = "abductor_skirt"
+	item_color = "abductor_skirt"

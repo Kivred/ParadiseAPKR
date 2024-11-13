@@ -1633,3 +1633,11 @@
 /obj/item/clothing/suit/towel/short/alt
 	icon_state = "towel_alt"
 	item_state = "towel_alt"
+
+/obj/item/clothing/suit/abductor_parade
+	name = "abductor's parade suit"
+	desc = "Abductor parade suit."
+	icon_state = "abductor_parade"
+	item_state = "abductor_parade"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
+	flags_inv = HIDEJUMPSUIT
