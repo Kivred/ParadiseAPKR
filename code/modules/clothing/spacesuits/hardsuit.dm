@@ -798,6 +798,143 @@
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/singuloth
 	sprite_sheets = null
 
+//Abductor hardsuit
+/obj/item/clothing/head/helmet/space/hardsuit/abductor
+	name = "abductor hardsuit's helmet"
+	desc = "An abductor hardsuit's advanced helmet."
+	alt_desc = "It is in combat mode."
+	icon_state = "hardsuit0-abductor"
+	item_state = "hardsuit-helm-abductor"
+	armor = list("melee" = 35, "bullet" = 15, "laser" = 15, "energy" = 20, "bomb" = 35, "bio" = 100, "rad" = 50, "fire" = 100, "acid" = 100)
+	item_color = "abductor"
+	var/on = FALSE
+	var/obj/item/clothing/suit/space/hardsuit/abductor/linkedsuit = null
+	var/combat_slow = 1
+	var/combat_armor_laser = 35
+	var/default_slow = 0
+	var/default_armor_laser = 15
+	actions_types = list(/datum/action/item_action/toggle_mode)
+	resistance_flags = ACID_PROOF
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	see_in_dark = 8
+	/// So you can't turn on your shield, spend all your charges, and toggle modes for quick shield recharge.
+	COOLDOWN_DECLARE(combat_mode_cd)
+	sprite_sheets = list(SPECIES_GREY = 'icons/mob/clothing/species/grey/helmet.dmi')
+
+/obj/item/clothing/head/helmet/space/hardsuit/abductor/Destroy()
+	linkedsuit = null
+	return ..()
+
+/obj/item/clothing/head/helmet/space/hardsuit/abductor/attack_self(mob/user)
+	adjust_headgear(user)
+
+/obj/item/clothing/head/helmet/space/hardsuit/abductor/update_icon_state()
+	icon_state = "[base_icon_state][on]-[item_color]"
+
+/obj/item/clothing/head/helmet/space/hardsuit/abductor/update_name(updates = ALL)
+	. = ..()
+	name = "[initial(name)][on ? " (combat)" : ""]"
+
+/obj/item/clothing/head/helmet/space/hardsuit/abductor/update_desc(updates = ALL)
+	. = ..()
+	desc = "[initial(desc)][on ? " [alt_desc]" : ""]"
+
+/obj/item/clothing/head/helmet/space/hardsuit/abductor/adjust_headgear(mob/living/carbon/human/user, toggle = TRUE)
+	if(user && !isturf(user.loc))
+		to_chat(user, span_warning("You cannot toggle your helmet while in [user.loc]!" ))
+		return
+
+	if(!COOLDOWN_FINISHED(src, combat_mode_cd))
+		to_chat(user, span_warning("Hold on, [linkedsuit]'s shield system still recharging!"))
+		return
+
+	if(toggle)
+		on = !on
+
+	if(user)
+		to_chat(user, span_notice("You switch your hardsuit to [on ? "combat mode." : "default mode."]"))
+		playsound(loc, 'sound/items/rig_deploy.ogg', 60, TRUE)
+
+	if(on)
+		armor.laser = combat_armor_laser
+		linkedsuit.AddComponent( \
+			/datum/component/shielded, \
+			shield_icon = "shield-pink", \
+			show_charge_as_alpha = TRUE, \
+			starting_charges = 0, \
+			max_charges = 4, \
+			charge_recovery = 2, \
+			charge_increment_delay = 2.5 SECONDS \
+		)
+	else
+		armor.laser = default_armor_laser
+		qdel(linkedsuit.GetComponent(/datum/component/shielded))
+		COOLDOWN_START(src, combat_mode_cd, 30 SECONDS)
+
+	update_appearance(UPDATE_ICON_STATE|UPDATE_NAME|UPDATE_DESC)
+	user?.update_head(src, toggle_off = !on)
+
+	for(var/datum/action/action as anything in actions)
+		action.UpdateButtonIcon()
+	
+	update_linked_hardsuit(toggle)
+
+/obj/item/clothing/head/helmet/space/hardsuit/abductor/proc/update_linked_hardsuit(toggle = TRUE)
+	if(!linkedsuit)
+		return
+
+	if(toggle)
+		linkedsuit.on = !linkedsuit.on
+
+	if(linkedsuit.on)
+		linkedsuit.slowdown = combat_slow
+		linkedsuit.armor.laser = linkedsuit.combat_armor_laser
+	else
+		linkedsuit.slowdown = default_slow
+		linkedsuit.armor.laser = linkedsuit.default_armor_laser
+
+	linkedsuit.update_appearance(UPDATE_ICON_STATE|UPDATE_NAME|UPDATE_DESC)
+	linkedsuit.update_equipped_item()
+
+
+/obj/item/clothing/suit/space/hardsuit/abductor
+	name = "abductor hardsuit"
+	desc = "An abductor hardsuit with built in energy shielding and jetpack. Made from alien materials, it looks very dangerous."
+	alt_desc = "It is in combat mode."
+	icon_state = "hardsuit0-abductor"
+	item_state = "hardsuit-abductor"
+	species_restricted = list(
+		SPECIES_ABDUCTOR,
+		SPECIES_GREY
+	)
+	armor = list("melee" = 35, "bullet" = 15, "laser" = 15, "energy" = 20, "bomb" = 35, "bio" = 100, "rad" = 50, "fire" = 100, "acid" = 100)
+	item_color = "abductor"
+	var/on = FALSE
+	var/combat_armor_laser = 35
+	var/default_armor_laser = 15
+	allowed = list(/obj/item/gun, /obj/item/melee/baton, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/abductor
+	jetpack = /obj/item/tank/jetpack/suit
+	resistance_flags = ACID_PROOF
+
+/obj/item/clothing/suit/space/hardsuit/abductor/Initialize(mapload)
+	. = ..()
+	var/obj/item/clothing/head/helmet/space/hardsuit/abductor/our_helmet = helmet
+	our_helmet?.linkedsuit = src
+	our_helmet?.adjust_headgear(toggle = FALSE)
+
+/obj/item/clothing/suit/space/hardsuit/abductor/update_icon_state()
+	icon_state = "hardsuit[on]-[item_color]"
+
+/obj/item/clothing/suit/space/hardsuit/abductor/update_name(updates = ALL)
+	. = ..()
+	name = "[initial(name)][on ? " (combat)" : ""]"
+
+/obj/item/clothing/suit/space/hardsuit/abductor/update_desc(updates = ALL)
+	. = ..()
+	desc = "[initial(desc)][on ? " [alt_desc]" : ""]"
+
+
 //Battlemage Hardsuit — code\modules\clothing\suits\wiz_robe.dm
 //Deathsquad Hardsuit — code\modules\clothing\spacesuits\ert.dm
 //Prototype RIG Hardsuit — code\modules\awaymissions\mission_code\ruins\oldstation.dm

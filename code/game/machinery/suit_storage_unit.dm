@@ -787,3 +787,15 @@
 	helmet_type  = /obj/item/clothing/head/helmet/space/eva/pirate/leader
 	mask_type    = /obj/item/clothing/mask/gas
 	storage_type = /obj/item/tank/internals/oxygen
+
+//abductor ssu
+/obj/machinery/suit_storage_unit/abductor
+	//TODO: desc
+	name = "abductor suit storage unit"
+	desc = "An industrial unit made to hold and decontaminate irradiated equipment."
+	icon_state = "abductor"
+
+/obj/machinery/suit_storage_unit/abductor/standard
+	suit_type    = /obj/item/clothing/suit/space/hardsuit/abductor
+	mask_type    = /obj/item/clothing/mask/gas
+	storage_type = /obj/item/tank/internals/oxygen
