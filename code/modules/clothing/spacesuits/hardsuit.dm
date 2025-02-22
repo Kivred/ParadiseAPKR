@@ -876,7 +876,7 @@
 
 	for(var/datum/action/action as anything in actions)
 		action.UpdateButtonIcon()
-	
+
 	update_linked_hardsuit(toggle)
 
 /obj/item/clothing/head/helmet/space/hardsuit/abductor/proc/update_linked_hardsuit(toggle = TRUE)
@@ -916,6 +916,7 @@
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/abductor
 	jetpack = /obj/item/tank/jetpack/suit
 	resistance_flags = ACID_PROOF
+	sprite_sheets = list(SPECIES_GREY = 'icons/mob/clothing/species/grey/suit.dmi')
 
 /obj/item/clothing/suit/space/hardsuit/abductor/Initialize(mapload)
 	. = ..()
