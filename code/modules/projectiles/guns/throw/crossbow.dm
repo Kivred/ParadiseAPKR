@@ -192,6 +192,8 @@
 	desc = "It's got a tip for you - get the point?"
 	icon_state = "bolt"
 	item_state = "bolt"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	throwforce = 20
 	w_class = WEIGHT_CLASS_SMALL
 	sharp = TRUE
@@ -205,6 +207,9 @@
 	name = "makeshift bolt"
 	desc = "A sharpened metal rod that can be fired out of a crossbow."
 	icon_state = "metal-rod"
+	item_state = "metal-rod"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	throwforce = 10
 
 /obj/item/arrow/proc/modify_arrow()
@@ -269,7 +274,7 @@
 
 /obj/item/arrow/rod/fire/attackby(obj/item/I, mob/user, params)
 	. = ..()
-	if(!ATTACK_CHAIN_CANCEL_CHECK(.) && is_hot(I))
+	if(!ATTACK_CHAIN_CANCEL_CHECK(.) && I.get_heat())
 		fire_up()
 
 
